@@ -15,7 +15,7 @@ jobs:
           install: true
           component: true
           record: true
-          test: yarn test
+          command: yarn test
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
