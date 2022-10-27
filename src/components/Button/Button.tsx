@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import Loader from '../../util/Loader'
 
@@ -46,52 +45,44 @@ export const Button = ({
 }
 
 type ButtonProps = {
-	primary?: boolean
-	loading?: boolean
-	size?: 'small' | 'base' | 'large'
-	type: 'button' | 'submit' | 'reset'
-	label: string
-	disabled?: boolean
-	onClick: () => void
-}
-
-Button.propTypes = {
 	/**
 	 * Is this the principal call to action on the page?
+	 * @default true
 	 */
-	primary: PropTypes.bool,
+	primary?: boolean
 	/**
 	 * Is the button representing a loading state?
+	 * @default false
 	 */
-	loading: PropTypes.bool,
+	loading?: boolean
 	/**
 	 * How large should the button be?
+	 * @default 'base'
 	 */
-	size: PropTypes.oneOf(['small', 'base', 'large']),
-	/**
-	 * Button contents
-	 */
-	label: PropTypes.string.isRequired,
-	/**
-	 * Optional click handler
-	 */
-	onClick: PropTypes.func,
-	/**
-	 * Is the button disabled?
-	 */
-	disabled: PropTypes.bool,
+	size?: 'small' | 'base' | 'large'
 	/**
 	 * What type of button is this?
 	 */
-	type: PropTypes.oneOf(['button', 'submit', 'reset']).isRequired,
+	type: 'button' | 'submit' | 'reset'
+	/**
+	 * Button contents
+	 */
+	label: string
+	/**
+	 * Is the button disabled?
+	 * @default false
+	 */
+	disabled?: boolean
+	/**
+	 * Optional click handler
+	 */
+	onClick?: () => void
 }
 
 Button.defaultProps = {
 	primary: true,
 	loading: false,
-	size: 'base',
-	onClick: undefined,
-	label: 'Click here!',
-	disabled: false,
 	type: 'button',
+	size: 'base',
+	disabled: false,
 }

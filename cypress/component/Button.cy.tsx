@@ -5,9 +5,11 @@ import terminalLog from '../support/component'
 
 const { Primary, Secondary, Loading, Small, Large, Disabled } = composeStories(stories)
 
-describe('Button.tsx', function () {
-	const label = 'Click Me!'
+describe('Button.tsx', function() {
+	let label:string
+	let count = 0
 	beforeEach(() => {
+		label = `Click Me! ${count++}`
 		cy.injectAxe()
 	})
 	it('should render component', () => {
@@ -19,11 +21,11 @@ describe('Button.tsx', function () {
 		cy.checkA11y(undefined, {
 			runOnly: {
 				type: 'tag',
-				values: ['wcag2a', 'wcag2aa', "section508"],
+				values: ['wcag2a', 'wcag2aa', 'section508']
 			}
 		}, terminalLog)
 	})
-	it('should render loading icon when loading prop is true', function () {
+	it('should render loading icon when loading prop is true', function() {
 		cy.mount(<Loading label={label} loading={true} />)
 		cy.get('button').children().should('have.class', 'animate-spin')
 	})
@@ -46,21 +48,27 @@ describe('Button.tsx', function () {
 		cy.get('button').should('have.attr', 'type', 'button')
 	})
 	it('should have a type of submit when type prop is submit', function() {
-		cy.mount(<Primary label={label} type="submit" />)
+		cy.mount(<Primary label={label} type='submit' />)
 		cy.get('button').should('have.attr', 'type', 'submit')
 	})
 	it('should have a type of reset when type prop is reset', function() {
-		cy.mount(<Primary label={label} type="reset" />)
+		cy.mount(<Primary label={label} type='reset' />)
 		cy.get('button').should('have.attr', 'type', 'reset')
 	})
 	it('should have increased size if size prop is set to large', function() {
-		cy.mount(<Large label={label} size="large" />)
+		cy.mount(<Large label={label} size='large' />)
 		cy.get('button').should('have.css', 'padding', '32px 40px')
 		cy.get('button').should('have.class', 'h-12 w-auto py-8 px-10')
 	})
 	it('should have decreased size if size prop is set to small', function() {
-		cy.mount(<Small label={label} size="small" />)
+		cy.mount(<Small label={label} size='small' />)
 		cy.get('button').should('have.css', 'padding', '16px 8px')
 		cy.get('button').should('have.class', 'h-4 w-auto py-4 px-2')
+	})
+	it('should execute function passed in through onClick prop', function() {
+		const onClick = cy.stub()
+		cy.mount(<Primary label={label} onClick={onClick} />)
+		cy.get('button').click()
+		expect(onClick).to.be.called
 	})
 })
