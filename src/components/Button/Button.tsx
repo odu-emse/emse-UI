@@ -17,7 +17,7 @@ export const Button = ({
 		: 'bg-blue-300 text-black hover:bg-blue-100 '
 	let buttonSize = ''
 	if (size === 'small') {
-		buttonSize = 'h-4 w-auto py-4 px-2'
+		buttonSize = 'h-4 w-auto py-4 px-3 text-xs'
 	} else if (size === 'large') {
 		buttonSize = 'h-12 w-auto py-8 px-10'
 	} else if (size === 'base') {
@@ -77,6 +77,10 @@ type ButtonProps = {
 	 * Optional click handler
 	 */
 	onClick?: () => void
+	/**
+	 * Optional HTML role attribute for the button element
+	 */
+	role?: string
 }
 
 Button.defaultProps = {

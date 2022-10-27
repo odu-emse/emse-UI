@@ -62,13 +62,16 @@ describe('Button.tsx', function() {
 	})
 	it('should have decreased size if size prop is set to small', function() {
 		cy.mount(<Small label={label} size='small' />)
-		cy.get('button').should('have.css', 'padding', '16px 8px')
-		cy.get('button').should('have.class', 'h-4 w-auto py-4 px-2')
+		cy.get('button').should('have.css', 'padding', '16px 12px')
+		cy.get('button').should('have.class', 'h-4 w-auto py-4 px-3')
 	})
 	it('should execute function passed in through onClick prop', function() {
-		const onClick = cy.stub()
+		//Arrange
+		const onClick = cy.spy().as('onClickSpy')
 		cy.mount(<Primary label={label} onClick={onClick} />)
+		//Act
 		cy.get('button').click()
-		expect(onClick).to.be.called
+		//Assert
+		cy.get('@onClickSpy').should('have.been.calledOnce')
 	})
 })
