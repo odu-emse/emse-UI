@@ -5,7 +5,6 @@ import { BubbleMessage } from '../components/BubbleMessage'
 export default {
 	title: 'Molecules/Bubble Message',
 	component: BubbleMessage,
-	args: {},
 } as ComponentMeta<typeof BubbleMessage>
 
 const Template: ComponentStory<typeof BubbleMessage> = (args) => (
@@ -30,7 +29,7 @@ Primary.args = {
 				image: 'https://images.unsplash.com/photo-1554629947-334ff61d85dc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=320&amp;h=320&amp;q=80',
 			},
 			message: 'How are you',
-			timestamp: 1664376815,
+			timestamp: 1231211842,
 		},
 		{
 			user: {
@@ -38,7 +37,7 @@ Primary.args = {
 				image: 'https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-4-470x470.png',
 			},
 			message: 'I am fine',
-			timestamp: 1664376815,
+			timestamp: 1748347589,
 		},
 		{
 			user: {

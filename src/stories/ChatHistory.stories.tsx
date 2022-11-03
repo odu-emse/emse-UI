@@ -9,8 +9,8 @@ export default {
 	component: ChatHistory,
 } as ComponentMeta<typeof ChatHistory>
 
-const onHandle = () => {
-	console.log('it works!')
+const onHandle = (event: any) => {
+	console.log(event)
 }
 
 const Template: ComponentStory<typeof ChatHistory> = (args) => (
@@ -65,4 +65,5 @@ Primary.args = {
 			newNotification: false,
 		},
 	],
+	handle: onHandle,
 }
