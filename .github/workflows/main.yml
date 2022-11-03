@@ -19,3 +19,20 @@ jobs:
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  codecov:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: yarn test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: false # optional (default = false)
+          verbose: true # optional (default = false)
