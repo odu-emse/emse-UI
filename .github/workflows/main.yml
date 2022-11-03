@@ -26,6 +26,8 @@ jobs:
         run: npm install -g yarn
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install Cypress
+        run: npm install -g cypress
       - name: Run tests
         run: yarn test
       - name: Upload coverage to Codecov
@@ -36,3 +38,7 @@ jobs:
           name: codecov-umbrella # optional
           fail_ci_if_error: false # optional (default = false)
           verbose: true # optional (default = false)
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
