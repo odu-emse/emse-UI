@@ -162,6 +162,10 @@
 				"always",
 				["lower-case", "sentence-case"]
 			],
+			"scope-empty": [
+				2,
+				"never"
+			],
 			"subject-case": [
 				1,
 				"never",
@@ -170,7 +174,16 @@
 					"pascal-case"
 				]
 			],
+			"subject-min-length": [
+				2,
+				"always",
+				8
+			],
 			"body-empty": [
+				1,
+				"never"
+			],
+			"body-leading-blank": [
 				1,
 				"never"
 			],
