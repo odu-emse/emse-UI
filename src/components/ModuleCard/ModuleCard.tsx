@@ -5,9 +5,9 @@ export const ModuleCard = ({
 	completion,
 }: ModuleProps): JSX.Element => {
 	return (
-		<div className="flex flex-col lg:flex-row md:items-stretch gap-4 border-gray bg-gray-100 drop-shadow-md border border-solid rounded">
+		<div className="moduleCard flex flex-col lg:flex-row md:items-stretch gap-4 border-gray bg-gray-100 drop-shadow-md border border-solid rounded">
 			<div
-				className={`flex w-full lg:w-4 p-2 lg:p-0 ${
+				className={`statusColorCode flex w-full lg:w-4 p-2 lg:p-0 ${
 					completion
 						? `bg-green-400`
 						: module.percentage > 25
@@ -17,22 +17,22 @@ export const ModuleCard = ({
 			></div>
 			<div className="flex grow flex-col lg:flex-row md:gap-10">
 				<div className="grow flex flex-col justify-between m-1">
-					<div className="flex text-gray-500 lg:text-base text-sm">{`${module.courseName} - ${module.moduleIdentifiers}`}</div>
+					<div className="flex text-gray-700 lg:text-base text-sm">{`${module.courseName} ${module.courseNumber} - ${module.moduleIdentifiers}`}</div>
 					<div className="flex lg:pb-4 font-bold text-base xl:text-lg">
 						{module.moduleName}
 					</div>
 					<div className="flex flex-row text-sm justify-between">
-						<p className="underline text-sm text-gray-400">Forum</p>
-						<p className="underline text-sm text-gray-400">
+						<p className="underline text-sm text-gray-700">Forum</p>
+						<p className="underline text-sm text-gray-700">
 							Assignment
 						</p>
-						<p className="underline text-sm text-gray-400">
+						<p className="underline text-sm text-gray-700">
 							Download
 						</p>
 						{completion ? (
 							``
 						) : (
-							<p className="underline text-sm text-red-500">
+							<p className="underline text-sm text-red-700">
 								Abandon
 							</p>
 						)}
@@ -106,7 +106,7 @@ export const ModuleCard = ({
 						</div>
 					) : (
 						<div className="flex flex-col w-full h-50 items-center justify-center gap-3 lg:items-center">
-							<div className="text-gray-400 text-sm">
+							<div className="text-gray-600 text-sm">
 								Current Topic
 							</div>
 							<div className="font-medium text-sm pr-2">
@@ -114,7 +114,7 @@ export const ModuleCard = ({
 							</div>
 							<div className="flex flex-col w-full px-3">
 								<div className="py-1">
-									<button className="text-white bg-blue-300 px-24 py-1 w-full">
+									<button className="text-sm bg-blue-300 px-24 py-1 w-full">
 										<span className="flex items-center justify-center">
 											{module.returnIdPage}
 										</span>
@@ -122,7 +122,7 @@ export const ModuleCard = ({
 								</div>
 								{/* Link to returnIdPage */}
 								<div>
-									<button className="text-white bg-orange-400 px-24 py-1 w-full mb-2">
+									<button className="text-sm bg-orange-400 px-24 py-1 w-full mb-2">
 										<span className="flex items-center justify-center">
 											{module.treeView}
 										</span>
@@ -143,6 +143,11 @@ type ModuleObject = {
 	 * @type string
 	 */
 	courseName: string
+	/**
+	 * A descriptive number of the course
+	 * @type number
+	 */
+	courseNumber: number
 	/**
 	 * An identification code that is specific to the course module
 	 * @type string

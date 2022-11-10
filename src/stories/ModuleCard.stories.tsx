@@ -12,12 +12,13 @@ const Template: ComponentStory<typeof ModuleCard> = (args: ModuleProps) => (
 	<ModuleCard {...args} />
 )
 
-export const Primary = Template.bind({})
+export const Primary: ComponentStory<typeof ModuleCard> = Template.bind({})
 Primary.storyName = 'first module card'
 Primary.args = {
 	completion: false,
 	module: {
-		courseName: 'ENMA 601',
+		courseName: 'ENMA',
+		courseNumber: 601,
 		moduleIdentifiers: 'M 178P',
 		moduleName: 'Ethnics and Philosophy in Engineering Applications',
 		percentage: 50,
@@ -28,12 +29,13 @@ Primary.args = {
 	},
 }
 
-export const Secondary = Template.bind({})
+export const Secondary: ComponentStory<typeof ModuleCard> = Template.bind({})
 Secondary.storyName = 'second module card'
 Secondary.args = {
 	completion: false,
 	module: {
-		courseName: 'ENMA 604',
+		courseName: 'ENMA',
+		courseNumber: 604,
 		moduleIdentifiers: '209V',
 		moduleName: 'Simulation Modeling in Transportation Networks',
 		percentage: 25,
@@ -44,12 +46,13 @@ Secondary.args = {
 	},
 }
 
-export const Tertiary = Template.bind({})
+export const Tertiary: ComponentStory<typeof ModuleCard> = Template.bind({})
 Tertiary.storyName = 'third module card'
 Tertiary.args = {
 	completion: true,
 	module: {
-		courseName: 'ENMA 709',
+		courseName: 'ENMA',
+		courseNumber: 709,
 		moduleIdentifiers: '084K',
 		moduleName: 'Risk Analysis',
 		percentage: 100,
