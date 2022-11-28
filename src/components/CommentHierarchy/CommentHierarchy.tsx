@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Thread } from '../Thread'
 
 export const CommentHierarchy: React.FC<CommentHierarchyProps> = ({
 	comments,
@@ -34,7 +35,13 @@ export const CommentHierarchy: React.FC<CommentHierarchyProps> = ({
 											</div>
 										</div>
 									</div>
-									<p className="text-sm">{message.content}</p>
+									<p className="text-sm">
+										<Thread
+											body={message.content}
+											upvotes={0}
+											title={null}
+										/>
+									</p>
 								</div>
 								<div className="border-l-2 ml-3">
 									<div className="space-y-4">
@@ -77,9 +84,17 @@ export const CommentHierarchy: React.FC<CommentHierarchyProps> = ({
 																	</div>
 																</div>
 																<p className="text-xs sm:text-sm">
-																	{
-																		value.content
-																	}
+																	<Thread
+																		body={
+																			value.content
+																		}
+																		upvotes={
+																			0
+																		}
+																		title={
+																			null
+																		}
+																	/>
 																</p>
 															</div>
 															{comments[index]
@@ -133,9 +148,17 @@ export const CommentHierarchy: React.FC<CommentHierarchyProps> = ({
 																							</div>
 																						</div>
 																						<p className="text-xs sm:text-sm">
-																							{
-																								value1.content
-																							}
+																							<Thread
+																								body={
+																									value1.content
+																								}
+																								upvotes={
+																									0
+																								}
+																								title={
+																									null
+																								}
+																							/>
 																						</p>
 																					</div>
 																				</div>
