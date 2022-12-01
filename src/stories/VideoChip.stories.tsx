@@ -13,5 +13,5 @@ const Template: ComponentStory<typeof VideoChip> = (args) => <VideoChip {...args
 export const Sample = Template.bind({})
 Sample.args = {
 	text: 'Hello there',
-	timestamp: 89
+	timestamp: 89, 
 }
