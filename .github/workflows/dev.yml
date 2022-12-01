@@ -1,8 +1,9 @@
 name: Publishing library
 
 on:
-  tags:
-    - v*
+  push:
+    tags:
+      - v*-rc.*
 
 jobs:
   publish:
