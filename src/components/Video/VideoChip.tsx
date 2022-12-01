@@ -18,7 +18,7 @@ export const VideoChip = ({
                 <p className='font-medium mt-1'>{text}</p>
             </div>
             <div className='bg-black inline-block mt-1 rounded p-1 leading-none bg-opacity-30 cursor-default select-none'>
-                <small>{ moment.utc(timestamp * 1000).format('HH:mm:ss', { trim: true }).replace(/^0(?:0:0?)?/, '') }</small>
+                <small>{ moment.utc(timestamp * 1000).format('HH:mm:ss').trim().replace(/^0(?:0:0?)?/, '') }</small>
             </div>
         </div>
     )

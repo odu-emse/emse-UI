@@ -40,9 +40,6 @@ export default defineConfig({
 				globals: {
 					react: 'React',
 					'react-dom': 'ReactDOM',
-				},
-				manualChunks: {
-					react: ['recharts'],
 				}
 			},
 			plugins: [

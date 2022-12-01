@@ -48,7 +48,7 @@ export const Assignment = ({
             >
             </textarea>
 
-            <Button label='SUBMIT' type="submit" primary />
+            <Button type="submit" variant={'primary'}>SUBMIT</Button>
         </div>
     )
 }
