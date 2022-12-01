@@ -1,4 +1,5 @@
 const { mergeConfig } = require('vite');
+const { resolve } = require("path");
 
 module.exports = {
   "stories": [
@@ -18,18 +19,48 @@ module.exports = {
   core: {
     builder: '@storybook/builder-vite',
   },
-  // async viteFinal(config) {
-  //   // Merge custom configuration into the default config
-  //   return mergeConfig(config, {
-  //     // Use the same "resolve" configuration as your app
-  //     resolve: (await import('../vite.config.js')).default.resolve,
-  //     // Add dependencies to pre-optimization
-  //     optimizeDeps: {
-  //       include: ['storybook-dark-mode'],
-  //     },
-  //   });
-  // },
   typescript: {
-    reactDocgen: 'react-docgen',
-  }
+    check: false,
+    checkOptions: {},
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
+  },
+  async viteFinal(config, { configType }) {
+    // TRY to reduce file sizes for SB to avoid GA chromatic deploy failure
+    //const usePlugins = [];
+    if (configType === "PRODUCTION") {
+      //usePlugins.push(splitVendorChunkPlugin());
+      // temporarily bumping up chunk size until we can figure out what's bloating this for SB
+      // config.build.chunkSizeWarningLimit = 15000;
+      config.build.sourcemap = false;
+    }
+    // return the customized config
+    return mergeConfig(config, {
+      // customize the vite config here
+      //plugins: usePlugins,
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              lodash: ["lodash"],
+              react: ["react"],
+              "react-dom": ["react-dom"],
+              "moment": ["moment"],
+              flowbite: ["flowbite"],
+              "rollup-plugin-polyfill-node": ["rollup-plugin-polyfill-node"],
+            },
+          },
+        },
+      },
+      resolve: {
+        alias: {
+          "@": resolve(__dirname, "/src"),
+          "~": resolve(__dirname, "/src"),
+        },
+      },
+    });
+  },
 }
