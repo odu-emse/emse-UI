@@ -3,7 +3,7 @@ import { Anchor } from '../Link/Anchor'
 export const ActiveModules = ({ modules }: ActiveModulesProps) => {
 	return (
 		<>
-			<h1 className="font-semibold text-2xl py-1">Active Module List</h1>
+			<h1 className="font-semibold text-2xl py-1">Your Active Modules</h1>
 			{modules.map((module, moduleIndex) => (
 				<Anchor
 				key={moduleIndex}
