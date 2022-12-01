@@ -82,8 +82,8 @@
 		"test-storybook": "test-storybook",
 		"build-storybook": "yarn style:build && build-storybook",
 		"build": "tsc --skipLibCheck --excludeDirectories node_module && vite build",
-		"style": "npx tailwindcss -i ./src/global.css -o ./src/output.css --watch",
-		"style:build": "npx tailwindcss -i ./src/global.css -o ./src/output.css",
+		"style": "yarn tailwindcss -i ./src/global.css -o ./src/output.css --watch",
+		"style:build": "yarn tailwindcss -i ./src/global.css -o ./src/output.css",
 		"ci": "start-server-and-test 'yarn storybook' 6006 'yarn test-storybook --coverage'",
 		"lint": "eslint ./src",
 		"lint:fix": "eslint ./src --fix"
