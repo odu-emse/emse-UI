@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build Storybook
-        run: yarn build-storybook
+        run: yarn storybook --smoke-test
   cypress-run:
     needs: [ build-storybook ]
     runs-on: ubuntu-latest
