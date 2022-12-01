@@ -3,6 +3,8 @@ name: Publishing library
 on:
   release:
     types: [created]
+  tags:
+    - v*
 
 jobs:
   publish:
@@ -14,6 +16,7 @@ jobs:
         with:
           node-version: 16.17.0
           registry-url: 'https://registry.npmjs.org'
+          scope: '@chefd'
       - name: Install dependencies
         run: yarn
       - name: Build styles
