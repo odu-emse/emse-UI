@@ -1,16 +1,20 @@
 import * as React from 'react'
 import { UserProfile } from '../components/UserProfile'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 export default {
 	title: 'Organisms/User Profile',
 	component: UserProfile,
-}
+	 argTypes:{
+		
+	}
+}as ComponentMeta<typeof UserProfile>
 
 const Template = (args) => <UserProfile {...args} />
 
-export const Primary = Template.bind({})
+export const Primary: ComponentStory<typeof UserProfile> = Template.bind({})
 Primary.args = {
-	isCurrentUser: 'true',
+	isCurrentUser: true,
 	user: {
 		firstname: 'Avantika',
 		lastName: 'Mittapally',
