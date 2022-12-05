@@ -4,15 +4,15 @@ import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 import NodeGlobalsPolyfillPlugin from '@esbuild-plugins/node-globals-polyfill'
 import NodeModulesPolyfillPlugin from '@esbuild-plugins/node-modules-polyfill'
+import nodePolyfills from 'rollup-plugin-polyfill-node'
 
 export default defineConfig({
 	optimizeDeps: {
+		include: ['react', 'react-dom', 'recharts'],
 		esbuildOptions: {
-			// Node.js global to browser globalThis
 			define: {
 				global: 'globalThis',
 			},
-			// Enable esbuild polyfill plugins
 			plugins: [
 				NodeGlobalsPolyfillPlugin({
 					process: true,
@@ -35,19 +35,21 @@ export default defineConfig({
 			fileName: (format) => `emse-ui.${format}.js`,
 		},
 		rollupOptions: {
-			external: ['react', 'react-dom', 'react-router-dom'],
+			external: ['react', 'react-dom'],
 			output: {
 				globals: {
 					react: 'React',
 					'react-dom': 'ReactDOM',
 				},
+				manualChunks: {
+					react: ['recharts'],
+				}
 			},
 			plugins: [
-				// Enable rollup polyfills plugin
-				// used during production bundling
-				// rollupNodePolyFill(),
+				nodePolyfills()
 			],
 		},
+		sourcemap: true,
 	},
 	resolve: {
 		alias: {

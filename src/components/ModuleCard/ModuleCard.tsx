@@ -1,38 +1,49 @@
 import * as React from 'react'
-
+import { Button } from '../Button'
 export const ModuleCard = ({
-	module,
+	parentCourse,
+	moduleName,
+	moduleNumber,
+	percentageCompleted,
+	averageTime,
+	userTime,
+	duration,
+	currentTopic,
+	primaryLink,
+	primaryLinkLabel,
+	secondaryLink,
+	secondaryLinkLabel,
 	completion,
 }: ModuleProps): JSX.Element => {
 	return (
-		<div className="flex flex-col lg:flex-row md:items-stretch gap-4 border-gray bg-gray-100 drop-shadow-md border border-solid rounded">
+		<div className="moduleCard flex flex-col lg:flex-row md:items-stretch gap-4 border-gray bg-gray-100 drop-shadow-md border border-solid rounded">
 			<div
-				className={`flex w-full lg:w-4 p-2 lg:p-0 ${
+				className={`statusColorCode flex w-full lg:w-4 p-2 lg:p-0 ${
 					completion
 						? `bg-green-400`
-						: module.percentage > 25
+						: percentageCompleted > 25
 						? `bg-blue-300`
 						: `bg-red-400`
 				}`}
 			></div>
 			<div className="flex grow flex-col lg:flex-row md:gap-10">
 				<div className="grow flex flex-col justify-between m-1">
-					<div className="flex text-gray-500 lg:text-base text-sm">{`${module.courseName} - ${module.moduleIdentifiers}`}</div>
+					<div className="flex text-gray-500 lg:text-base text-sm">{`${parentCourse} - ${moduleNumber}`}</div>
 					<div className="flex lg:pb-4 font-bold text-base xl:text-lg">
-						{module.moduleName}
+						{moduleName}
 					</div>
 					<div className="flex flex-row text-sm justify-between">
-						<p className="underline text-sm text-gray-400">Forum</p>
-						<p className="underline text-sm text-gray-400">
+						<p className="underline text-sm text-gray-700">Forum</p>
+						<p className="underline text-sm text-gray-700">
 							Assignment
 						</p>
-						<p className="underline text-sm text-gray-400">
+						<p className="underline text-sm text-gray-700">
 							Download
 						</p>
 						{completion ? (
 							``
 						) : (
-							<p className="underline text-sm text-red-500">
+							<p className="underline text-sm text-red-700">
 								Abandon
 							</p>
 						)}
@@ -42,7 +53,7 @@ export const ModuleCard = ({
 				<div className="flex-none flex flex-col items-center">
 					<div className="completionPercentage">
 						<p className="lg:mt-5">
-							{module.percentage + `%`} Viewed
+							{percentageCompleted + `%`} Viewed
 						</p>
 					</div>
 
@@ -61,7 +72,7 @@ export const ModuleCard = ({
 							strokeWidth="5"
 							strokeDasharray="10"
 							strokeDashoffset={`${
-								100 - (module.percentage / 100) * 10
+								100 - (percentageCompleted / 100) * 10
 							}`}
 							strokeLinecap="round"
 							stroke="currentColor"
@@ -76,20 +87,18 @@ export const ModuleCard = ({
 						{completion ? (
 							<div className="flex flex-col items-center">
 								<p className="">
-									{`Average time: ${module.averageTime} ${
-										module.averageTime === 1
-											? `minute`
-											: `minutes`
+									{`Average time: ${averageTime} ${
+										averageTime === 1 ? `minute` : `minutes`
 									}`}
 								</p>
-								<p>{`Your time: ${module.userTime} ${
-									module.userTime === 1 ? `minute` : `minutes`
+								<p>{`Your time: ${userTime} ${
+									userTime === 1 ? `minute` : `minutes`
 								}`}</p>
 							</div>
 						) : (
 							<p className="">
-								{`Approximately ${module.duration} ${
-									module.duration === 1 ? `minute` : `minutes`
+								{`Approximately ${duration} ${
+									duration === 1 ? `minute` : `minutes`
 								} left `}
 							</p>
 						)}
@@ -98,35 +107,55 @@ export const ModuleCard = ({
 
 				<div className="flex-none flex flex-col items-center justify-center ">
 					{completion ? (
-						<div className="flex items-center justify-center px-2">
+						<div className="moduleCompleted flex items-center justify-center px-2">
 							<p className="md:"></p>
 							<p className="text-white bg-blue-300 px-20 py-1 w-full my-1">
 								Continue
 							</p>
 						</div>
 					) : (
-						<div className="flex flex-col w-full h-50 items-center justify-center gap-3 lg:items-center">
-							<div className="text-gray-400 text-sm">
+						<div className="moduleInProgress currentTopicStatus flex flex-col w-full h-50 items-center justify-center gap-3 lg:items-center">
+							<div className="text-gray-600 text-sm">
 								Current Topic
 							</div>
 							<div className="font-medium text-sm pr-2">
-								{module.currentTopic}
+								{currentTopic}
 							</div>
 							<div className="flex flex-col w-full px-3">
 								<div className="py-1">
-									<button className="text-white bg-blue-300 px-24 py-1 w-full">
-										<span className="flex items-center justify-center">
-											{module.returnIdPage}
-										</span>
-									</button>
+									<Button
+										loading={false}
+										size="base"
+										onClick={null || undefined}
+										type="button"
+										disabled={false}
+										variant="primary"
+									>
+										<a
+											href={primaryLink}
+											className="flex items-center justify-center"
+										>
+											{primaryLinkLabel}
+										</a>
+									</Button>
 								</div>
 								{/* Link to returnIdPage */}
 								<div>
-									<button className="text-white bg-orange-400 px-24 py-1 w-full mb-2">
-										<span className="flex items-center justify-center">
-											{module.treeView}
-										</span>
-									</button>
+									<Button
+										loading={false}
+										size="base"
+										onClick={null || undefined}
+										type="button"
+										disabled={false}
+										variant="secondary"
+									>
+										<a
+											href={secondaryLink}
+											className="flex items-center justify-center"
+										>
+											{secondaryLinkLabel}
+										</a>
+									</Button>{' '}
 								</div>
 								{/* Link to treeView */}
 							</div>
@@ -137,20 +166,24 @@ export const ModuleCard = ({
 		</div>
 	)
 }
-type ModuleObject = {
-	courseName: string
-	moduleIdentifiers: string
-	moduleName: string
-	percentage: number
-	duration?: number
-	averageTime?: number
-	userTime?: number
-	currentTopic?: string
-	returnIdPage: string
-	treeView?: string
-}
 
 export type ModuleProps = {
-	module: ModuleObject
+	/**
+	 * Boolean that determines if the course module is completed or not
+	 * @type boolean
+	 * @default false
+	 */
 	completion: boolean
+	parentCourse: string
+	moduleName: string
+	moduleNumber: string
+	percentageCompleted: number
+	averageTime?: number
+	userTime?: number
+	duration?: number
+	currentTopic: string
+	primaryLink: string
+	primaryLinkLabel: string
+	secondaryLink: string
+	secondaryLinkLabel: string
 }
