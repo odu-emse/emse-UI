@@ -26,20 +26,20 @@ export const Panel: React.FC<PanelProps> = ({
 
 export type PanelProps = {
 	/**
-	 *  Indicates the children elements in JSX.Element or React.ReactNode
+	 *  A special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component 
 	 */
 	children: JSX.Element | React.ReactNode
 	/**
-	 *  Indicates the className - based on selection of a property named 'size', className is atlered 
-	 */
+     *  A string that indicates the className - based on selection of a property named 'size', className is atlered 
+     */
 	className?: string
 	/**
-	 *  Indicates the size - user selective option
-	 */
+     *  A enum that indicates the size - user selective option
+     */
 	size?: 1 | 2 | 4 | 6
 	/**
-	 *  Indicates the title of the panel component
-	 */
+     *  A string that indicates the title of the panel component
+     */
 	title: string
 }
 
