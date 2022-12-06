@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-const Panel = ({
+export const Panel: React.FC<PanelProps> = ({
 	children,
 	className,
 	size,
 	title,
-}: PanelProps): JSX.Element => {
+}): React.ReactElement => {
 	const classes = [
-		'rounded bg-gray-100 shadow-md container p-1 md:p-4',
+		'rounded bg-gray-100 shadow-md p-1 md:p-4',
 		className,
 		size === 1 && 'w-full',
 		size === 2 && 'w-1/2',
@@ -26,20 +26,20 @@ const Panel = ({
 
 export type PanelProps = {
 	/**
-	 *  A special prop, automatically passed to every component, that can be used to render the content included between the opening and closing tags when invoking a component 
+	 *  Indicates the children elements in JSX.Element or React.ReactNode
 	 */
 	children: JSX.Element | React.ReactNode
 	/**
-     *  A string that indicates the className - based on selection of a property named 'size', className is atlered 
-     */
+	 *  Indicates the className - based on selection of a property named 'size', className is atlered 
+	 */
 	className?: string
 	/**
-     *  A enum that indicates the size - user selective option
-     */
+	 *  Indicates the size - user selective option
+	 */
 	size?: 1 | 2 | 4 | 6
 	/**
-     *  A string that indicates the title of the panel component
-     */
+	 *  Indicates the title of the panel component
+	 */
 	title: string
 }
 

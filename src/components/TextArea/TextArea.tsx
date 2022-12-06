@@ -3,7 +3,7 @@ import { useRef } from 'react'
 import useAutosizeTextArea from './useAutosizeTextArea'
 import { IoSend } from 'react-icons/io5'
 
-export const TextArea = ({
+export const TextArea: React.FC<TextAreaProps> = ({
 	handle = () => null,
 	value = '',
 	id = 'text-area',
@@ -18,7 +18,7 @@ export const TextArea = ({
 	wrap = 'soft',
 	autofocus = false,
 	label = '',
-}: TextAreaProps) => {
+}): React.ReactElement => {
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
 	useAutosizeTextArea(textAreaRef.current, value)
@@ -54,7 +54,7 @@ export const TextArea = ({
 							disabled ? 'opacity-50' : ''
 						}`}
 					>
-						<button type="button">
+						<button type="button" aria-label="send">
 							<IoSend size={20} className="mr-1" />
 						</button>
 					</span>
@@ -69,19 +69,61 @@ export const TextArea = ({
 	)
 }
 
-type TextAreaProps = {
+export type TextAreaProps = {
+	/**
+	 * A event handler that changes the value of the text area element
+	 */
 	handle?: (evt: React.ChangeEvent<HTMLTextAreaElement>) => void
+	/**
+	 * A default string value which will be displayed in the element on page load
+	 */
 	value: string
+	/**
+	 * A string defines an identifier which must be unique in the whole document
+	 */
 	id?: string
+	/**
+	 * A string defines an explicit role for the text area element for use by assistive technologies
+	 */
 	role?: string
+	/**
+	 * A string defines the name of the text area element
+	 */
 	name?: string
+	/**
+	 * A number defines the number of rows in a text area
+	 */
 	rows?: number
+	/**
+	 * A string that provides a hint to the user of what can be entered in the text field
+	 */
 	placeholder?: string
+	/**
+	 * A boolean makes the text area not mutable, focusable, or even submitted with the form
+	 */
 	disabled?: boolean
+	/**
+	 * A number determines the maximum characters allowed for user input inside the text area
+	 */
 	maxLength?: number
+	/**
+	 * A boolean indicates that the user must specify a value for the input before the owning form can be submitted
+	 */
 	required?: boolean
+	/**
+	 * A Boolean makes the element not mutable, meaning the user can not edit the control
+	 */
 	readOnly?: boolean
+	/**
+	 * An enum that specifies how the text in a text area is to be wrapped when submitted in a form
+	 */
 	wrap?: 'soft' | 'hard'
+	/**
+	 * A boolean that determines whether the text area element should be focused on page load
+	 */
 	autofocus?: boolean
+	/**
+	 * A string that represents a caption for the text area
+	 */
 	label?: string
 }
