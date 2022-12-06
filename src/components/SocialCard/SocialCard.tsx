@@ -9,14 +9,13 @@ import {
 	FaStar,
 } from 'react-icons/fa'
 import { MdAttachFile } from 'react-icons/md'
-
-export const SocialCard = ({
+export const SocialCard: React.FC<SocialCardProps> = ({
 	timestamp,
 	content,
 	likes,
 	comments,
 	user,
-}: SocialCardProps) => {
+}): React.ReactElement => {
 	const [isClicked, setIsClicked] = React.useState(false)
 
 	return (
@@ -69,7 +68,7 @@ export const SocialCard = ({
 
 						<div className="mt-4 mb-6">
 							<div className="mb-1 text-lg font-bold text-slate-700">
-								<span className="opacity-50">{user.role}</span>{' '}
+								<span className="text-slate-500">{user.role}</span>{' '}
 								- {user.firstName} {user.lastName}
 							</div>
 							<div className="text-xs text-neutral-500">
@@ -103,11 +102,11 @@ export const SocialCard = ({
 				<div className="border-b p-2">
 					<div className="flex items-center justify-between text-slate-500 ">
 						<div className="flex space-x-4 md:space-x-8">
-							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-500">
+							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
 								<AiFillLike size={20} className="mr-1" />
 								<span className="">{likes} Likes</span>
 							</div>
-							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-500">
+							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
 								<FaCommentDots size={20} className="mr-1" />
 								<span className="">{comments} comments</span>
 							</div>
@@ -130,10 +129,10 @@ export const SocialCard = ({
 
 					{/* Comment icons */}
 					<div className="flex gap-2">
-						<button className="flex items-center justify-center px-5">
+						<button aria-label="attach file" className="flex items-center justify-center px-5">
 							<MdAttachFile size={20} className="mr-1" />
 						</button>
-						<button className="flex items-center justify-center px-8">
+						<button aria-label="insert emoji" className="flex items-center justify-center px-8">
 							<FaRegSmile size={20} className="mr-1" />
 						</button>
 					</div>
