@@ -6,6 +6,19 @@ import terminalLog from '../support/component'
 const { Primary, Secondary } = composeStories(stories)
 
 describe('SocialCard.tsx', function () {
+	const timestamp = 1664376815
+	const content = "This is a cypress test"
+	const likes = 31
+	const comments = 42
+	const TA =  {
+		firstName : "Avantika",
+		lastName : "Mittapally",
+		role : "TA",
+		image : "https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-4-470x470.png",
+		title : "Chair of Department",
+		office : "ESB 2101",
+		department : "Engineering Management & Systems Engineering",
+		}
     beforeEach(() => {
 		cy.injectAxe()
 	})
