@@ -15,11 +15,11 @@ export const Link = ({
 }: LinkProps) : JSX.Element => {
 	return (
 		<IconContext.Provider value={{ className: 'xxs:h-4 xs:h-4 sm:h-6' }}>
-			<a href={to} className={role === 'logo' ? 'h-full w-full' : ''}>
+			<a href={to} className={role === 'logo' ? 'h-full w-full' : ''} role="menu" aria-label="Link">
 				<li
 					className={`${
 						role === 'menuitem'
-							? 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 justify-start transition-all'
+							? 'block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 justify-start transition-all'
 							: 'text-gray-300 hover:bg-gray-700 hover:text-white text-sm font-medium uppercase tracking-widest list-none transition-all'
 					} 
 					${role === 'logo' ? 'px-0.5 py-0.5' : 'sm:px-3 sm:py-4'}
@@ -33,6 +33,7 @@ export const Link = ({
 							: ''
 					}`}
 					role={role}
+					
 				>
 					<span className="flex sm:gap-2 gap-0 items-center">
 						<span
