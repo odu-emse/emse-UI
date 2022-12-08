@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { IconContext } from 'react-icons'
 
+
 export const Link = ({
 	to = '',
 	activeClassName,
@@ -11,7 +12,7 @@ export const Link = ({
 	extended,
 	role,
 	children,
-}: LinkProps) => {
+}: LinkProps) : JSX.Element => {
 	return (
 		<IconContext.Provider value={{ className: 'xxs:h-4 xs:h-4 sm:h-6' }}>
 			<a href={to} className={role === 'logo' ? 'h-full w-full' : ''}>
