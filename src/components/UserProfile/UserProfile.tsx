@@ -33,7 +33,7 @@ export const UserProfile = ({ user, isCurrentUser }: UserProfileProps) => {
 
 					<a className=" text-base" href="#user">
 						<li
-							className="py-1 px-3 hover:bg-gray-100 border-b border-gray-300 list-none"
+							className="py-1 px-3 hover:bg-gray-100 border-b border-gray-300 list-none" role ="UserInfo-Link"
 							// onClick={() => {
 							// 	setShowProfile(!showProfile),
 							// 		setShowPlanOfStudy(showPlanOfStudy)
@@ -44,7 +44,7 @@ export const UserProfile = ({ user, isCurrentUser }: UserProfileProps) => {
 					</a>
 					<a className="text-base" href="#modules">
 						<li
-							className="py-1 px-3 hover:bg-gray-100 border-b border-gray-300 list-none"
+							className="py-1 px-3 hover:bg-gray-100 border-b border-gray-300 list-none" role="PlanOfStudy-Link"
 							// onClick={() => {
 							// 	setShowPlanOfStudy(!showPlanOfStudy),
 							// 		setShowProfile(showProfile)
@@ -141,36 +141,36 @@ export const UserProfile = ({ user, isCurrentUser }: UserProfileProps) => {
 					<table className="border-separate border-spacing-2 border border-slate-400 ...">
 						<thead>
 							<tr>
-								<th className="p-2 border border-slate-300 ...">
+								<th className="p-2 border border-slate-300 ..." role="StatusRole">
 									Status
 								</th>
-								<th className="p-2 border border-slate-300 ...">
+								<th className="p-2 border border-slate-300 ..." role="TermRole">
 									Term
 								</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="userStatus-index-0">
 									{user.planOfStudy[0].status}
 								</td>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="termStatus-index-0">
 									{user.planOfStudy[0].term}
 								</td>
 							</tr>
 							<tr>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="userStatus-index-1">
 									{user.planOfStudy[1].status}
 								</td>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="termStatus-index-1">
 									{user.planOfStudy[1].term}
 								</td>
 							</tr>
 							<tr>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="userStatus-index-2">
 									{user.planOfStudy[2].status}
 								</td>
-								<td className="p-2 border border-slate-300 ...">
+								<td className="p-2 border border-slate-300 ..." role="termStatus-index-2">
 									{user.planOfStudy[2].term}
 								</td>
 							</tr>
