@@ -28,7 +28,7 @@ export const ModuleCard = ({
 			></div>
 			<div className="flex grow flex-col lg:flex-row md:gap-10">
 				<div className="grow flex flex-col justify-between m-1">
-					<div className="flex text-gray-500 lg:text-base text-sm">{`${parentCourse} - ${moduleNumber}`}</div>
+					<div className="flex text-gray-400 lg:text-base text-sm">{`${parentCourse} - ${moduleNumber}`}</div>
 					<div className="flex lg:pb-4 font-bold text-base xl:text-lg">
 						{moduleName}
 					</div>

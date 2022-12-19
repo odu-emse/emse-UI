@@ -67,8 +67,8 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 						</div>
 
 						<div className="mt-4 mb-6">
-							<div className="mb-1 text-lg font-bold text-slate-700">
-								<span className="text-slate-500">{user.role}</span>{' '}
+							<div className="fullname mb-1 text-lg font-bold text-slate-700">
+								<span className="text-slate-500 role">{user.role}</span>{' '}
 								- {user.firstName} {user.lastName}
 							</div>
 							<div className="text-xs text-neutral-500">
