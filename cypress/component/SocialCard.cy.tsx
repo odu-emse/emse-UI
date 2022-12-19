@@ -6,7 +6,7 @@ import terminalLog from '../support/component'
 const { Primary, Secondary } = composeStories(stories)
 
 describe('SocialCard.tsx', function () {
-	const timestamp = 1664376815
+	const timestamp = 1387503354
 	const content = "This is a cypress test"
 	const likes = 31
 	const comments = 42
@@ -64,5 +64,23 @@ describe('SocialCard.tsx', function () {
 		cy.get('div.fullname').should('have.css', 'line-height', '28px')
 		cy.get('div.fullname').should('have.css', 'font-weight', '700')
 		cy.get('div.fullname').should('contain.text', 'testFirst testLast')
+	})
+	it('should render component timestamp with department name and their office', () => {
+		cy.mount(<Primary timestamp={timestamp}  content={content} />)
+		cy.get('div.department').should('have.class', 'text-xs text-neutral-500')
+		cy.get('div.department').should('have.css', 'font-size','12px')
+		cy.get('div.department').should('have.css', 'line-height','16px')
+		cy.get('div.department').should('have.css', 'color','rgb(115, 115, 115)')
+		cy.get('div.department').should('contain.text', 9)
+		/**
+		 * from now and counting the unix Timestamp to years, 1387503354 which was Dec 19 2013, 
+		 *   9 years from now, test result will be greater than 9 years 
+		 */
+		cy.get('div.department')
+			.invoke('text')
+			.then(parseInt)
+			.should('be.a', 'number')
+			.and('be.at.least', 9)
+		
 	})
 })

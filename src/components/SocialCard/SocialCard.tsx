@@ -71,8 +71,8 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 								<span className="text-slate-500 role">{user.role}</span>{' '}
 								- {user.firstName} {user.lastName}
 							</div>
-							<div className="text-xs text-neutral-500">
-								{moment(timestamp).fromNow()} |{' '}
+							<div className="department text-xs text-neutral-500">
+								{moment.unix(timestamp).fromNow()} |{' '}
 								{user.department} - {user.office}
 							</div>
 						</div>
