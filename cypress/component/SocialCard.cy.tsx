@@ -88,12 +88,12 @@ describe('SocialCard.tsx', function () {
 	it('should render component role-symbol with correct padding and color', () => {
 		TA.role = role
 		cy.mount(<Secondary user={TA}/>)
-		expect(cy.get('div.rolesymbol')).to.exist
-		cy.get('div.rolesymbol').should('have.descendants', 'svg')
-		cy.get('div.rolesymbol svg').should('have.class', 'text-yellow-400')
-		cy.get('div.rolesymbol svg').should('have.css', 'color', 'rgb(227, 160, 8)')
-		cy.get('div.rolesymbol svg').should('have.attr', 'height', '38')
-		cy.get('div.rolesymbol svg').should('have.attr', 'width', '38')
+		expect(cy.get('div.role-symbol')).to.exist
+		cy.get('div.role-symbol').should('have.descendants', 'svg')
+		cy.get('div.role-symbol svg').should('have.class', 'text-yellow-400')
+		cy.get('div.role-symbol svg').should('have.css', 'color', 'rgb(227, 160, 8)')
+		cy.get('div.role-symbol svg').should('have.attr', 'height', '38')
+		cy.get('div.role-symbol svg').should('have.attr', 'width', '38')
 	})
 	it('should render component content with its input text in medium-dark gray and small font', () => {
 		cy.mount(<Primary content={content}/>)
@@ -103,6 +103,40 @@ describe('SocialCard.tsx', function () {
 		cy.get('div.break-words').should('have.css', 'line-height', '20px')
 		cy.get('div.break-words').should('have.css', 'color', 'rgb(82, 82, 82)')
 	})
+	it('should render components for both likes and comments with according properties', () => {
+		cy.mount(<Secondary likes={likes} comments={comments}/>)
+		expect(cy.get('div.likes')).to.exist
+		cy.get('div.likes').invoke('text')
+						   	.then(parseInt)
+						   	.should('be.a', 'number')
+							.should('eq',31)
+		cy.get('div.likes').should('have.class', 'flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600')
+		cy.get('div.likes').should('have.css', 'display', 'flex')
+		cy.get('div.likes').should('have.css', 'color', 'rgb(28, 100, 242)')
+		cy.get('div.likes').should('have.css', 'align-items', 'center')
+		cy.get('div.likes').should('have.css', 'cursor', 'pointer')
+		cy.get('div.likes').should('have.descendants', 'svg')
+		cy.get('div.likes svg').should('have.attr', 'height', '20')
+		cy.get('div.likes svg').should('have.attr', 'width', '20')
+		expect(cy.get('div.comments')).to.exist
+		cy.get('div.comments').invoke('text')
+						   	.then(parseInt)
+						   	.should('be.a', 'number')
+							.should('eq',42)
+		cy.get('div.comments').should('have.class', 'flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600')
+		cy.get('div.comments').should('have.css', 'display', 'flex')
+		cy.get('div.comments').should('have.css', 'color', 'rgb(28, 100, 242)')
+		cy.get('div.comments').should('have.css', 'align-items', 'center')
+		cy.get('div.comments').should('have.css', 'cursor', 'pointer')
+		cy.get('div.comments').should('have.descendants', 'svg')
+		cy.get('div.comments svg').should('have.attr', 'height', '20')
+		cy.get('div.comments svg').should('have.attr', 'width', '20')
+	})
+	it('should render components for input text and its ability to hold text', () => {
+		cy.mount(<Primary likes={likes} comments={comments}/>)
 
-
+	})
+	it('should render components for attach file and emoji', () => {
+		cy.mount(<Primary likes={likes} comments={comments}/>)
+	})
 })

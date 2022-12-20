@@ -78,7 +78,7 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 						</div>
 					</div>
 
-					<div className="rolesymbol px-10 ">
+					<div className="role-symbol px-10 ">
 							{user.role === 'Prof' && (
 								<FaStar size={38} className="text-yellow-400" />
 							)}
@@ -102,11 +102,11 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 				<div className="border-b p-2">
 					<div className="flex items-center justify-between text-slate-500 ">
 						<div className="flex space-x-4 md:space-x-8">
-							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
+							<div className="likes flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
 								<AiFillLike size={20} className="mr-1" />
 								<span className="">{likes} Likes</span>
 							</div>
-							<div className="flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
+							<div className="comments flex cursor-pointer items-center transition hover:text-slate-600 text-blue-600">
 								<FaCommentDots size={20} className="mr-1" />
 								<span className="">{comments} comments</span>
 							</div>
