@@ -78,21 +78,21 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 						</div>
 					</div>
 
-					<div className=" px-10 ">
-						{user.role === 'Prof' && (
-							<FaStar size={38} className="text-yellow-400" />
-						)}
+					<div className="rolesymbol px-10 ">
+							{user.role === 'Prof' && (
+								<FaStar size={38} className="text-yellow-400" />
+							)}
 
-						{user.role === 'Advisor' && (
-							<FaGraduationCap
-								size={38}
-								className="text-yellow-400"
-							/>
-						)}
+							{user.role === 'Advisor' && (
+								<FaGraduationCap
+									size={38}
+									className="text-yellow-400"
+								/>
+							)}
 
-						{user.role === 'TA' && (
-							<FaBookmark size={38} className="text-yellow-400" />
-						)}
+							{user.role === 'TA' && (
+								<FaBookmark size={38} className="text-yellow-400" />
+							)}
 					</div>
 				</div>
 

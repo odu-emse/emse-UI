@@ -10,6 +10,8 @@ describe('SocialCard.tsx', function () {
 	const content = "This is a cypress test"
 	const likes = 31
 	const comments = 42
+	const office = "ESB 1717"
+	const role = "Prof"
 	const TA =  {
 		firstName : "testFirst",
 		lastName : "testLast",
@@ -51,13 +53,13 @@ describe('SocialCard.tsx', function () {
 		cy.get('img').should('have.css', 'box-shadow', 'rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px')
     })
     it('should render component role in light color with correct content', () => {
-		cy.mount(<Primary user={TA}/>)
+		cy.mount(<Primary user={TA} />)
 		cy.get('div').get('span.role').should('have.class', 'text-slate-500')
 		cy.get('div').get('span.role').should('have.css', 'color', 'rgb(100, 116, 139)')
 		cy.get('div').get('span.role').should('have.text', 'TA')
 	})
     it('should render component user-fullName in dark color with correct content', () => {
-		cy.mount(<Primary user={TA}/>)
+		cy.mount(<Primary user={TA} />)
 		cy.get('div.fullname').should('have.class', 'mb-1 text-lg font-bold text-slate-700')
 		cy.get('div.fullname').should('have.css', 'margin-bottom', '4px')
 		cy.get('div.fullname').should('have.css', 'font-size', '18px')
@@ -66,12 +68,13 @@ describe('SocialCard.tsx', function () {
 		cy.get('div.fullname').should('contain.text', 'testFirst testLast')
 	})
 	it('should render component timestamp with department name and their office', () => {
-		cy.mount(<Primary timestamp={timestamp}  content={content} />)
+		TA.office=office
+		cy.mount(<Secondary user={TA} timestamp={timestamp}  content={content} />)
 		cy.get('div.department').should('have.class', 'text-xs text-neutral-500')
 		cy.get('div.department').should('have.css', 'font-size','12px')
 		cy.get('div.department').should('have.css', 'line-height','16px')
 		cy.get('div.department').should('have.css', 'color','rgb(115, 115, 115)')
-		cy.get('div.department').should('contain.text', 9)
+		cy.get('div.department').should('contain.text', 'ESB 1717')
 		/**
 		 * from now and counting the unix Timestamp to years, 1387503354 which was Dec 19 2013, 
 		 *   9 years from now, test result will be greater than 9 years 
@@ -81,6 +84,25 @@ describe('SocialCard.tsx', function () {
 			.then(parseInt)
 			.should('be.a', 'number')
 			.and('be.at.least', 9)
-		
 	})
+	it('should render component role-symbol with correct padding and color', () => {
+		TA.role = role
+		cy.mount(<Secondary user={TA}/>)
+		expect(cy.get('div.rolesymbol')).to.exist
+		cy.get('div.rolesymbol').should('have.descendants', 'svg')
+		cy.get('div.rolesymbol svg').should('have.class', 'text-yellow-400')
+		cy.get('div.rolesymbol svg').should('have.css', 'color', 'rgb(227, 160, 8)')
+		cy.get('div.rolesymbol svg').should('have.attr', 'height', '38')
+		cy.get('div.rolesymbol svg').should('have.attr', 'width', '38')
+	})
+	it('should render component content with its input text in medium-dark gray and small font', () => {
+		cy.mount(<Primary content={content}/>)
+		cy.get('div.break-words').should('have.text', 'This is a cypress test')
+		cy.get('div.break-words').should('have.class', 'text-sm text-neutral-600')
+		cy.get('div.break-words').should('have.css', 'font-size', '14px')
+		cy.get('div.break-words').should('have.css', 'line-height', '20px')
+		cy.get('div.break-words').should('have.css', 'color', 'rgb(82, 82, 82)')
+	})
+
+
 })
