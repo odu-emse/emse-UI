@@ -129,10 +129,10 @@ export const SocialCard: React.FC<SocialCardProps> = ({
 
 					{/* Comment icons */}
 					<div className="flex gap-2">
-						<button aria-label="attach file" className="flex items-center justify-center px-5">
+						<button aria-label="attach-file" className="flex items-center justify-center px-5">
 							<MdAttachFile size={20} className="mr-1" />
 						</button>
-						<button aria-label="insert emoji" className="flex items-center justify-center px-8">
+						<button aria-label="insert-emoji" className="flex items-center justify-center px-8">
 							<FaRegSmile size={20} className="mr-1" />
 						</button>
 					</div>
