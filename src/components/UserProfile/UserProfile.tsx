@@ -106,11 +106,12 @@ export const UserProfile = ({ user, isCurrentUser }: UserProfileProps) => {
 						</div>
 
 						<Button
-							label="Update Profile"
 							type="submit"
 							disabled={!isCurrentUser}
-							primary
-						/>
+							variant="primary"
+						>
+							Update Profile
+						</Button>
 
 						<div
 							className={`relative z-10 ${

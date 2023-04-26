@@ -1,0 +1,33 @@
+name: Publishing library
+
+on:
+  push:
+    tags:
+      - v*-rc.*
+    pull_request:
+      branches:
+        - dev
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.17.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.17.0
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@chefd'
+      - name: Install dependencies
+        run: yarn
+      - name: Build styles
+        run: yarn style:build
+      - name: Build library
+        run: yarn build
+      - name: Bump version
+        run: yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+      - name: Publish to NPM
+        run: yarn publish --access public --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
